@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>A Boy Who Loves Chelsea</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+:root{--blue:#034694;--deep:#06142e;--gold:#e8bd59;--cream:#f4ead5}
+*{box-sizing:border-box}
+body{margin:0;background:#050b18;color:#fff;font-family:'Kanit',sans-serif;min-height:100vh;display:grid;place-items:center}
+.app{width:min(100vw,520px);height:min(100dvh,920px);min-height:650px;position:relative;overflow:hidden;background:#071329;box-shadow:0 20px 70px #0009}
+.scene{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity 1s ease;background:linear-gradient(180deg,#101b3a 0%,#142344 58%,#211d27 58%,#100e17 100%)}
+.scene.active{opacity:1;pointer-events:auto}
+.stars{position:absolute;inset:0 0 43% 0;background-image:radial-gradient(#fff 1px,transparent 1.5px),radial-gradient(#8ca8d9 1px,transparent 1.5px);background-size:73px 67px,113px 97px;background-position:0 0,30px 20px;opacity:.4}
+.window{position:absolute;top:9%;left:7%;width:27%;height:18%;border:8px solid #273252;border-radius:8px;background:linear-gradient(#0b1732,#17294b);box-shadow:inset 0 0 25px #020817}
+.window:before,.window:after{content:"";position:absolute;background:#273252}
+.window:before{width:6px;height:100%;left:50%}.window:after{height:6px;width:100%;top:50%}
+.moon{position:absolute;right:12%;top:18%;width:25px;height:25px;border-radius:50%;background:#e9d7a4;box-shadow:8px -5px 0 0 #101b3a}
+.poster{position:absolute;right:7%;top:9%;width:29%;height:16%;background:#eee5d3;color:#17233e;transform:rotate(4deg);display:grid;place-items:center;text-align:center;padding:8px;font-size:clamp(10px,2.7vw,15px);box-shadow:0 5px 12px #0006}
+.poster b{color:var(--blue);font-size:1.1em}
+.scarf{position:absolute;left:11%;top:29%;width:38px;height:115px;background:repeating-linear-gradient(to bottom,#064a9c 0 23px,#eee 23px 29px);box-shadow:0 3px 8px #0006}
+.scarf:after{content:"";position:absolute;bottom:-14px;left:5px;width:28px;height:15px;background:repeating-linear-gradient(90deg,#ddd 0 3px,transparent 3px 7px)}
+.tv{position:absolute;top:31%;left:15%;width:70%;height:29%;background:#090c15;border:9px solid #171b28;border-radius:18px;padding:7px;box-shadow:0 12px 28px #0009}
+.pitch{height:100%;position:relative;overflow:hidden;background:repeating-linear-gradient(90deg,#17653c 0 26px,#1d7747 26px 52px)}
+.pitch:before{content:"";position:absolute;inset:8px;border:2px solid #b8d4b7;opacity:.8}
+.pitch:after{content:"";position:absolute;left:50%;top:8px;bottom:8px;border-left:2px solid #b8d4b7}
+.circle{position:absolute;left:calc(50% - 28px);top:calc(50% - 28px);width:56px;height:56px;border:2px solid #b8d4b7;border-radius:50%}
+.score{position:absolute;top:5px;left:7px;z-index:2;background:#101522;color:#fff;padding:3px 8px;font-size:11px;border-radius:4px}
+.dot{position:absolute;width:13px;height:13px;border-radius:50%;background:#0755b4;border:2px solid #a8c6f0;box-shadow:0 1px 3px #0008;animation:move 2.8s ease-in-out infinite alternate}
+.dot.red{background:#c72e3e;border-color:#f3b3b8}
+.dot:nth-of-type(3){left:38%;top:32%}.dot:nth-of-type(4){left:58%;top:56%;animation-delay:.4s}.dot:nth-of-type(5){left:70%;top:28%;animation-delay:.8s}.dot:nth-of-type(6){left:48%;top:70%;animation-delay:1.2s}.dot:nth-of-type(7){left:80%;top:65%;animation-delay:.2s}
+@keyframes move{to{transform:translate(18px,-9px)}}
+.cabinet{position:absolute;top:60%;left:16%;width:68%;height:12%;background:#4b332e;border:5px solid #65483b;border-radius:5px;box-shadow:0 12px 20px #0007}
+.cabinet:before{content:"";position:absolute;inset:12px;background:linear-gradient(90deg,transparent 49%,#281c20 49% 51%,transparent 51%);border:2px solid #2b2023;border-radius:4px}
+.floor{position:absolute;bottom:0;height:39%;width:100%;background:repeating-linear-gradient(0deg,#17131b 0 48px,#211b24 49px 51px)}
+.rug{position:absolute;bottom:4%;left:5%;width:90%;height:23%;border:3px dashed #263d76;border-radius:50%;background:#0b1b3b}
+.kid{position:absolute;bottom:13%;left:50%;transform:translateX(-50%);width:48%;height:30%;z-index:3}
+.head{position:absolute;top:0;left:34%;width:32%;aspect-ratio:1;border-radius:50%;background:#17131a;box-shadow:inset 0 5px 0 #4c536b}
+.ear{position:absolute;top:38%;width:13%;height:20%;background:#9b6c50;border-radius:50%}.ear.l{left:27%}.ear.r{right:27%}
+.body{position:absolute;bottom:0;left:10%;width:80%;height:62%;background:#0751a0;border-radius:28% 28% 9% 9%;box-shadow:inset 0 8px 0 #0d66bd}
+.body:before{content:"HAZARD";position:absolute;top:25%;width:100%;text-align:center;letter-spacing:3px;font-size:clamp(11px,3vw,16px);font-weight:600;color:#d7e4f6}
+.body:after{content:"10";position:absolute;top:43%;width:100%;text-align:center;font-size:clamp(42px,12vw,65px);font-weight:700;color:#d7e4f6}
+.cloud{position:absolute;left:50%;bottom:37%;transform:translateX(-50%);font-size:38px;opacity:.9;animation:float 3s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-50%,-9px)}}
+.coinjar{position:absolute;bottom:10%;right:13%;width:62px;height:80px;border:4px solid #c7a66a;border-radius:20px 20px 15px 15px;background:#d7bd83aa;z-index:4}
+.coinjar:before{content:"";position:absolute;top:-6px;left:9px;width:36px;height:7px;border-radius:50%;background:#c7a66a}
+.coinjar:after{content:"฿";position:absolute;inset:0;display:grid;place-items:center;color:#795b35;font-size:28px}
+.caption{position:absolute;z-index:10;bottom:8%;left:7%;right:7%;text-align:center;font-size:clamp(17px,4.6vw,23px);line-height:1.55;font-weight:500;text-shadow:0 3px 8px #000;opacity:0;transform:translateY(12px);transition:.7s}
+.scene.active .caption{opacity:1;transform:translateY(0)}
+.caption small{display:block;font-size:.65em;font-weight:300;color:#d6dff1;margin-top:5px}
+.glow{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 48%,#2765a52b,transparent 65%);pointer-events:none}
+.stadium{position:absolute;inset:0;background:linear-gradient(#101b36 0 42%,#174a72 42% 55%,#143b2e 55% 100%)}
+.stadium:before{content:"";position:absolute;left:8%;right:8%;top:12%;height:33%;border-radius:50% 50% 10% 10%;border:18px solid #26395d;border-bottom:0;box-shadow:inset 0 12px #536b8d}
+.stadium:after{content:"CHELSEA";position:absolute;top:27%;width:100%;text-align:center;font-size:clamp(30px,9vw,55px);font-weight:700;letter-spacing:7px;color:#fff;text-shadow:0 4px 10px #000}
+.bigdream{position:absolute;top:56%;width:100%;text-align:center;color:#f5e8c8;font-size:22px;letter-spacing:2px}
+.controls{position:absolute;z-index:20;bottom:15px;left:0;right:0;display:flex;justify-content:center;gap:9px;padding:0 12px}
+button{font:500 13px 'Kanit',sans-serif;border:1px solid #7795c7;background:#0b3e80;color:#fff;padding:9px 15px;border-radius:30px;box-shadow:0 4px 12px #0006}
+button:active{transform:scale(.96)}
+.progress{position:absolute;z-index:20;top:0;left:0;height:4px;background:#e8bd59;width:0;transition:width .4s}
+.toplabel{position:absolute;z-index:20;top:14px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:3px;color:#c7d5ed;opacity:.8}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="app" aria-label="เรื่องเล่าแฟนเชลซี">
+<div class="progress" id="progress"></div><div class="toplabel">A CHELSEA STORY · BLUE IS THE COLOUR</div>
+
+<section class="scene active" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="moon"></div><div class="poster">สักวันฉันจะได้ไป<br><b>Stamford Bridge</b> ★</div><div class="scarf"></div>
+ <div class="tv"><div class="pitch"><div class="score">CHE 1 - 0&nbsp;&nbsp; 89:56&nbsp; LIVE</div><i class="circle"></i><i class="dot"></i><i class="dot red"></i><i class="dot"></i><i class="dot red"></i><i class="dot"></i><i class="dot red"></i></div></div>
+ <div class="cabinet"></div><div class="floor"></div><div class="rug"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">เด็กคนหนึ่ง… รักเชลซีมาตั้งแต่ยังจำความได้<small>ทุกคืนที่มีบอล คือคืนพิเศษของเขา</small></div><div class="glow"></div>
+</section>
+
+<section class="scene" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="moon"></div><div class="poster">สักวันฉันจะได้ไป<br><b>Stamford Bridge</b> ★</div><div class="scarf"></div>
+ <div class="tv"><div class="pitch"><div class="score">CHE 1 - 0&nbsp;&nbsp; 89:56&nbsp; LIVE</div><i class="circle"></i><i class="dot"></i><i class="dot red"></i><i class="dot"></i><i class="dot red"></i><i class="dot"></i><i class="dot red"></i></div></div><div class="cabinet"></div><div class="floor"></div><div class="rug"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">เสื้อสีน้ำเงินตัวเดิม… เบอร์ 10 ตัวที่เขาหวงที่สุด<small>บ้านอาจไม่ได้ร่ำรวย แต่หัวใจเต็มร้อยเสมอ</small></div>
+</section>
+
+<section class="scene" data-time="6500">
+ <div class="stars"></div><div class="window"></div><div class="tv"><div class="pitch"><div class="score">CHE 2 - 0&nbsp;&nbsp; GOAL!</div><i class="circle"></i><i class="dot"></i><i class="dot red"></i><i class="dot"></i></div></div><div class="cabinet"></div><div class="floor"></div><div class="rug"></div>
+ <div class="kid" style="animation:bounce .55s infinite alternate"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">นัดไหนบอลเข้า เขากระโดดโลดเต้น ตะโกนสุดเสียง…<small style="color:#f3d16d">ประตู!!! COME ON CHELSEA!</small></div>
+</section>
+
+<section class="scene" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="poster">สักวันฉันจะได้ไป<br><b>Stamford Bridge</b> ★</div><div class="tv"><div class="pitch"><div class="score">FULL TIME · 0 - 1</div><i class="circle"></i><i class="dot red"></i><i class="dot"></i></div></div><div class="cabinet"></div><div class="floor"></div><div class="rug"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div><div class="cloud">☁️</div></div>
+ <div class="caption">แต่ถ้าสัปดาห์ไหนบอลแพ้…<small>กินข้าวก็ไม่อร่อย อ่านหนังสือก็ไม่เข้าหัว</small></div>
+</section>
+
+<section class="scene" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="poster">สักวันฉันจะได้ไป<br><b>Stamford Bridge</b> ★</div><div class="scarf"></div><div class="floor"></div><div class="rug"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">ในห้องเล็ก ๆ มีโปสเตอร์ใบเดียว กับผ้าพันคอสีน้ำเงินผืนเก่า<small>และโน้ตแผ่นเล็ก ๆ ที่เขาไม่เคยลืม</small></div>
+</section>
+
+<section class="scene" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="poster" style="top:22%;right:20%;width:60%;height:23%;font-size:19px">สักวันฉันจะได้ไป<br><b>STAMFORD BRIDGE</b><br>★</div><div class="floor"></div><div class="rug"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">เขาฝันว่าสักวัน… จะได้ไปนั่งที่สแตมฟอร์ดบริดจ์<small>ที่ลอนดอน ด้วยตาของตัวเอง</small></div>
+</section>
+
+<section class="scene" data-time="7000">
+ <div class="stars"></div><div class="window"></div><div class="floor"></div><div class="rug"></div><div class="coinjar"></div>
+ <div class="kid"><div class="head"></div><div class="ear l"></div><div class="ear r"></div><div class="body"></div></div>
+ <div class="caption">ตั๋วใบเดียว… ราคาเท่ากับค่าขนมสามปีของเขา<small>เขาจึงเริ่มเก็บเหรียญ ทีละบาท ทีละสิบบาท</small></div>
+</section>
+
+<section class="scene" data-time="8000">
+ <div class="stadium"></div><div class="bigdream">ONE DAY · ONE DREAM · CHELSEA</div>
+ <div class="caption">ผ่านมาสิบห้าปี… วันนี้เขาเรียนจบแล้ว<small>ฝันนี้ไม่ได้มาง่าย ๆ แต่เขาไม่เคยยอมแพ้ แล้วคุณล่ะ… คิดว่าเขาจะไปถึงไหม?</small></div>
+</section>
+
+<div class="controls">
+ <button id="prev">ย้อนกลับ</button><button id="play">Ⅱ หยุด</button><button id="next">ถัดไป →</button>
+</div>
+</main>
+<style>@keyframes bounce{to{transform:translate(-50%,-18px)}}</style>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];
+const progress=document.getElementById('progress');
+const playBtn=document.getElementById('play');
+let index=0,playing=true,timer=null,elapsed=0,start=Date.now();
+function show(n){
+ index=(n+scenes.length)%scenes.length;
+ scenes.forEach((s,i)=>s.classList.toggle('active',i===index));
+ progress.style.width=((index+1)/scenes.length*100)+'%';
+ elapsed=0;start=Date.now();schedule();
+}
+function schedule(){
+ clearTimeout(timer);
+ if(!playing)return;
+ const duration=Number(scenes[index].dataset.time);
+ timer=setTimeout(()=>show(index+1),Math.max(500,duration-elapsed));
+}
+playBtn.onclick=()=>{
+ playing=!playing;
+ playBtn.textContent=playing?'Ⅱ หยุด':'▶ เล่นต่อ';
+ if(playing){start=Date.now();schedule()}else{elapsed+=Date.now()-start;clearTimeout(timer)}
+};
+document.getElementById('next').onclick=()=>show(index+1);
+document.getElementById('prev').onclick=()=>show(index-1);
+let touchX=0;
+document.querySelector('.app').addEventListener('touchstart',e=>touchX=e.changedTouches[0].screenX,{passive:true});
+document.querySelector('.app').addEventListener('touchend',e=>{
+ const dx=e.changedTouches[0].screenX-touchX;
+ if(Math.abs(dx)>55)show(index+(dx<0?1:-1));
+},{passive:true});
+schedule();
+</script>
+</body>
+</html>
