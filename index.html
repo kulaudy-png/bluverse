@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07152f">
+<title>Bluverse — My Creative Universe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Kanit:wght@300;400;500;600;700&display=swap');
+:root{--bg:#07101f;--panel:#0d1b31;--panel2:#112440;--blue:#2878e5;--cyan:#75c7ff;--text:#f2f6ff;--muted:#9aaecb;--line:#203653}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#143b70 0,transparent 36%),var(--bg);color:var(--text);font-family:'Kanit','DM Sans',sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}.wrap{width:min(1120px,100% - 36px);margin:auto}
+header{padding:22px 0 16px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#2b8cff,#123c88);display:grid;place-items:center;font:800 20px 'DM Sans';box-shadow:0 8px 25px #1266c655}
+.brand-name{font:800 23px 'DM Sans';letter-spacing:.5px}.brand-name span{color:var(--cyan)}
+.tag{font:500 10px 'DM Sans';letter-spacing:2.2px;color:var(--muted);margin-top:2px}
+.header-btn,.primary,.secondary{border:1px solid #31547b;border-radius:13px;padding:10px 14px;color:#fff;background:#122946;cursor:pointer}
+.primary{background:linear-gradient(135deg,#2878e5,#1550a4);border:0;font-weight:600;box-shadow:0 8px 24px #1550a444}
+.hero{position:relative;overflow:hidden;border:1px solid #24466c;border-radius:26px;padding:36px 28px;background:linear-gradient(115deg,#102b50 0%,#0d1d37 58%,#102d52 100%);min-height:240px}
+.hero:after{content:"";position:absolute;width:260px;height:260px;border-radius:50%;right:-65px;top:-100px;border:1px solid #76bfff33;box-shadow:0 0 0 28px #76bfff0a,0 0 0 58px #76bfff08}
+.eyebrow{color:#9bcfff;font:700 11px 'DM Sans';letter-spacing:2.6px}
+h1{font:800 clamp(34px,7vw,58px)/1.05 'DM Sans';margin:12px 0 12px;letter-spacing:-1.5px}
+h1 span{color:#8dcfff}.hero p{color:#c1d2e8;max-width:510px;line-height:1.8;margin:0 0 20px;font-weight:300}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:2}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 32px}
+.stat{background:#0c1a2d;border:1px solid var(--line);border-radius:16px;padding:15px 17px}
+.stat strong{display:block;font:800 24px 'DM Sans';color:#9bd3ff}.stat span{font-size:12px;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:25px 0 14px}
+.section-head h2{margin:0;font-size:22px}.section-head p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.search{width:100%;padding:13px 15px;border-radius:14px;background:#0b192c;border:1px solid var(--line);color:#fff;outline:none;margin-bottom:12px}
+.search:focus,input:focus,textarea:focus,select:focus{border-color:#65b8ff}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 14px;scrollbar-width:none}
+.chip{white-space:nowrap;border:1px solid var(--line);background:#0d1b30;color:#aebed4;padding:8px 13px;border-radius:30px;font-size:12px;cursor:pointer}
+.chip.active{background:#174b89;border-color:#438cdb;color:white}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:35px}
+.card{background:linear-gradient(150deg,#10233c,#0b1729);border:1px solid #203b5c;border-radius:19px;overflow:hidden;transition:.2s;display:flex;flex-direction:column;min-width:0}
+.card:hover{transform:translateY(-3px);border-color:#4c8dc9}
+.thumb{height:145px;display:grid;place-items:center;position:relative;overflow:hidden;background:radial-gradient(circle at 50% 50%,#1b5794,#0b1b35 70%)}
+.thumb .symbol{font-size:53px;filter:drop-shadow(0 8px 12px #0008)}
+.thumb small{position:absolute;left:12px;top:11px;background:#07172dcc;border:1px solid #ffffff22;border-radius:30px;padding:4px 9px;font-size:10px;color:#c9e4ff}
+.card-body{padding:14px;display:flex;flex-direction:column;flex:1}
+.card h3{margin:0 0 5px;font-size:17px}.card p{margin:0;color:var(--muted);font-size:12px;line-height:1.65;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:14px}
+.date{font:11px 'DM Sans';color:#8299b8}.open{border:0;background:#174c88;color:white;border-radius:10px;padding:7px 11px;font-size:11px;cursor:pointer}
+.empty{grid-column:1/-1;text-align:center;padding:35px;color:var(--muted);border:1px dashed #294666;border-radius:16px}
+footer{border-top:1px solid #1d314b;padding:20px 0 35px;text-align:center;color:#7187a6;font:11px 'DM Sans';letter-spacing:1px}
+dialog{width:min(520px,calc(100% - 26px));border:1px solid #31547b;border-radius:20px;background:#0c1b30;color:white;padding:22px;box-shadow:0 25px 90px #000b}
+dialog::backdrop{background:#020713c9;backdrop-filter:blur(5px)}
+dialog h2{margin:0 0 14px}.form{display:grid;gap:11px}.form label{font-size:12px;color:#a9bfd9}.form input,.form textarea,.form select{width:100%;margin-top:5px;border:1px solid #294765;border-radius:11px;background:#071426;color:#fff;padding:11px;outline:none}.form textarea{min-height:75px;resize:vertical}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:6px}.note{font-size:11px;color:#8ca4c2;line-height:1.6;margin:12px 0 0}
+@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.thumb{height:125px}.hero{padding:29px 22px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:21px}}
+@media(max-width:420px){.grid{grid-template-columns:1fr}.thumb{height:150px}.stats{grid-template-columns:repeat(3,1fr)}.stat span{font-size:10px}.header-btn{padding:9px 10px;font-size:12px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+ <a class="brand" href="#">
+  <div class="logo">B</div>
+  <div><div class="brand-name">Blu<span>verse</span></div><div class="tag">MY CREATIVE UNIVERSE</div></div>
+ </a>
+ <button class="header-btn" id="addTop">＋ เพิ่มผลงาน</button>
+</header>
+<section class="hero">
+ <div class="eyebrow">WELCOME TO MY WORLD</div>
+ <h1>Ideas become<br><span>something real.</span></h1>
+ <p>พื้นที่เล็ก ๆ สำหรับเก็บไอเดีย ทดลองสร้างสรรค์ และรวบรวมทุกผลงานของฉันไว้ในจักรวาลเดียว</p>
+ <div class="hero-actions"><button class="primary" id="explore">สำรวจผลงาน ↓</button><button class="secondary" id="addHero">＋ สร้างโปรเจกต์</button></div>
+</section>
+<section class="stats">
+ <div class="stat"><strong id="totalCount">1</strong><span>โปรเจกต์ทั้งหมด</span></div>
+ <div class="stat"><strong>∞</strong><span>ไอเดียที่เป็นไปได้</span></div>
+ <div class="stat"><strong>01</strong><span>จักรวาลของฉัน</span></div>
+</section>
+<section id="projects">
+ <div class="section-head"><div><h2>คลังผลงานของฉัน</h2><p>ทุกชิ้นเริ่มต้นจากการลองทำ</p></div></div>
+ <input class="search" id="search" placeholder="ค้นหาผลงาน..." aria-label="ค้นหาผลงาน">
+ <div class="filters" id="filters">
+  <button class="chip active" data-filter="ทั้งหมด">ทั้งหมด</button>
+  <button class="chip" data-filter="Animation">🎬 Animation</button>
+  <button class="chip" data-filter="Web">💻 Web</button>
+  <button class="chip" data-filter="Design">🎨 Design</button>
+  <button class="chip" data-filter="Football">⚽ Football</button>
+  <button class="chip" data-filter="Experiments">🧪 Experiments</button>
+ </div>
+ <div class="grid" id="grid"></div>
+</section>
+<footer>BLUVERSE · BUILT WITH CURIOSITY</footer>
+</div>
+
+<dialog id="addDialog">
+ <h2>เพิ่มผลงานใหม่ ✦</h2>
+ <form class="form" id="projectForm">
+  <label>ชื่อผลงาน<input name="title" required maxlength="60" placeholder="เช่น My first website"></label>
+  <label>หมวดหมู่<select name="category"><option>Animation</option><option>Web</option><option>Design</option><option>Football</option><option>Experiments</option></select></label>
+  <label>คำอธิบาย<textarea name="description" maxlength="220" placeholder="เล่าเกี่ยวกับผลงานชิ้นนี้..."></textarea></label>
+  <label>ลิงก์ไฟล์หรือเว็บไซต์ (ถ้ามี)<input name="url" type="url" placeholder="https://... หรือ URL ของผลงาน"></label>
+  <div class="form-actions"><button type="button" class="secondary" id="cancel">ยกเลิก</button><button class="primary" type="submit">บันทึกผลงาน</button></div>
+ </form>
+ <p class="note">ข้อมูลที่เพิ่มจะถูกเก็บไว้ในเบราว์เซอร์เครื่องนี้ก่อน หากล้างข้อมูล Safari หรือเปลี่ยนเครื่อง รายการที่เพิ่มเองอาจไม่ตามไปด้วย</p>
+</dialog>
+<script>
+const starter=[{id:'chelsea-story',title:'A Boy Who Loves Chelsea',category:'Animation',description:'เรื่องราวของเด็กคนหนึ่งที่มีความฝันอยากไป Stamford Bridge สักวันหนึ่ง',url:'projects/chelsea_story.html',symbol:'🔵',date:'13 NOV 2026'}];
+const key='bluverse-projects-v1';
+let projects;
+try{projects=JSON.parse(localStorage.getItem(key))||starter}catch(e){projects=starter}
+let filter='ทั้งหมด';
+const grid=document.getElementById('grid');
+const icons={Animation:'🎬',Web:'💻',Design:'🎨',Football:'⚽',Experiments:'🧪'};
+function save(){localStorage.setItem(key,JSON.stringify(projects))}
+function render(){
+ const q=document.getElementById('search').value.toLowerCase();
+ const shown=projects.filter(p=>(filter==='ทั้งหมด'||p.category===filter)&&(`${p.title} ${p.description} ${p.category}`).toLowerCase().includes(q));
+ document.getElementById('totalCount').textContent=projects.length;
+ grid.innerHTML='';
+ if(!shown.length){grid.innerHTML='<div class="empty">ยังไม่พบผลงาน ลองเปลี่ยนคำค้นหาหรือเพิ่มผลงานใหม่ดูนะ</div>';return}
+ shown.forEach(p=>{
+  const card=document.createElement('article');card.className='card';
+  const thumb=document.createElement('div');thumb.className='thumb';
+  const badge=document.createElement('small');badge.textContent=p.category;
+  const symbol=document.createElement('div');symbol.className='symbol';symbol.textContent=p.symbol||icons[p.category]||'✦';
+  thumb.append(badge,symbol);
+  const body=document.createElement('div');body.className='card-body';
+  const title=document.createElement('h3');title.textContent=p.title;
+  const desc=document.createElement('p');desc.textContent=p.description||'ยังไม่มีคำอธิบาย';
+  const foot=document.createElement('div');foot.className='card-foot';
+  const date=document.createElement('span');date.className='date';date.textContent=p.date||'NEW PROJECT';
+  const open=document.createElement('button');open.className='open';open.textContent='เปิดผลงาน ↗';
+  open.onclick=()=>{if(p.url){if(p.url.startsWith('http'))window.open(p.url,'_blank','noopener');else location.href=p.url}else alert('ยังไม่ได้ใส่ลิงก์ผลงานชิ้นนี้')};
+  foot.append(date,open);body.append(title,desc,foot);card.append(thumb,body);grid.append(card);
+ });
+}
+const dialog=document.getElementById('addDialog');
+function openDialog(){dialog.showModal()}
+document.getElementById('addTop').onclick=openDialog;
+document.getElementById('addHero').onclick=openDialog;
+document.getElementById('cancel').onclick=()=>dialog.close();
+document.getElementById('explore').onclick=()=>document.getElementById('projects').scrollIntoView({behavior:'smooth'});
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('filters').addEventListener('click',e=>{
+ const b=e.target.closest('button[data-filter]');if(!b)return;
+ filter=b.dataset.filter;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===b));render();
+});
+document.getElementById('projectForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=new FormData(e.target);
+ projects.unshift({id:Date.now().toString(),title:f.get('title').trim(),category:f.get('category'),description:f.get('description').trim(),url:f.get('url').trim(),symbol:icons[f.get('category')],date:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase()});
+ save();render();e.target.reset();dialog.close();
+});
+render();
+</script>
+</body>
+</html>
