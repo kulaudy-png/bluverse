@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ความฝันของเด็กน้อย</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@600;700&family=Sarabun:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#03050a;overflow:hidden;-webkit-tap-highlight-color:transparent}
+body{display:flex;align-items:center;justify-content:center}
+.stage{position:relative;width:min(100vw,calc(100vh*400/711));width:min(100vw,calc(100dvh*400/711));aspect-ratio:400/711;touch-action:manipulation;cursor:pointer;user-select:none;-webkit-user-select:none}
+svg{display:block;width:100%;height:100%}
+.hand{font-family:'Mali','Sarabun','Noto Sans Thai',cursive,sans-serif;font-weight:700}
+.sub{font-family:'Sarabun','Noto Sans Thai',sans-serif;font-weight:800;font-size:17px;fill:#fff;stroke:rgba(0,0,0,.8);stroke-width:3.6px;paint-order:stroke;stroke-linejoin:round}
+.shirt{font-family:'Arial Black','Sarabun',Impact,sans-serif;font-weight:900}
+.star{animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.2}50%{opacity:1}}
+#kidSway{transform-origin:200px 640px;animation:breathe 3.2s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.012)}}
+#kidHead{transform-origin:200px 530px;animation:sway 4.6s ease-in-out infinite}
+@keyframes sway{0%,100%{transform:rotate(-1.8deg)}50%{transform:rotate(1.8deg)}}
+.hop{animation:hop .7s ease-in-out infinite}
+@keyframes hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.led{animation:led 2.4s steps(1) infinite}
+@keyframes led{0%,92%{opacity:1}93%,100%{opacity:.2}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+<svg id="scene" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 711" preserveAspectRatio="xMidYMid meet" role="img" aria-label="เด็กน้อยใส่เสื้อสีน้ำเงินนั่งดูฟุตบอลหน้าทีวี ดีใจเมื่อลูกบอลเข้าประตู แล้วฝันถึงการได้ไปดูในสนามจริง">
+<defs>
+  <linearGradient id="wallG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0d1630"/><stop offset="1" stop-color="#1a2547"/>
+  </linearGradient>
+  <linearGradient id="floorG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#3b2b24"/><stop offset="1" stop-color="#201510"/>
+  </linearGradient>
+  <pattern id="stripes" width="26" height="10" patternUnits="userSpaceOnUse">
+    <rect width="13" height="10" fill="#fff" opacity=".022"/>
+  </pattern>
+  <radialGradient id="tvGlow" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#8fd6ff" stop-opacity=".5"/>
+    <stop offset=".6" stop-color="#5aa9ff" stop-opacity=".14"/>
+    <stop offset="1" stop-color="#5aa9ff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="floorGlowG" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#78c2ff" stop-opacity=".38"/>
+    <stop offset="1" stop-color="#78c2ff" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="vig" cx="50%" cy="48%" r="75%">
+    <stop offset=".55" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".6"/>
+  </radialGradient>
+  <radialGradient id="screenVig" cx="50%" cy="50%" r="70%">
+    <stop offset=".6" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity=".45"/>
+  </radialGradient>
+  <linearGradient id="reflect" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".16"/>
+    <stop offset=".35" stop-color="#fff" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="scan" width="4" height="3" patternUnits="userSpaceOnUse">
+    <rect width="4" height="1.1" fill="#000" opacity=".16"/>
+  </pattern>
+  <pattern id="net" width="3.2" height="3.2" patternUnits="userSpaceOnUse">
+    <path d="M0 0L3.2 3.2M3.2 0L0 3.2" stroke="#fff" stroke-width=".35" opacity=".8"/>
+  </pattern>
+  <filter id="noise" x="0" y="0" width="100%" height="100%">
+    <feTurbulence id="noiseSeed" type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="1"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <filter id="blur6" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="6"/></filter>
+  <clipPath id="screenClip"><rect x="90" y="180" width="220" height="140" rx="6"/></clipPath>
+  <clipPath id="dreamClip"><circle cx="200" cy="250" r="118"/></clipPath>
+  <linearGradient id="dreamSky" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#060d30"/><stop offset="1" stop-color="#1b3280"/>
+  </linearGradient>
+  <radialGradient id="lightG" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#fff8d6" stop-opacity=".95"/>
+    <stop offset="1" stop-color="#fff8d6" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="beamG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff6c8" stop-opacity=".3"/>
+    <stop offset="1" stop-color="#fff6c8" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="grassG" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#1f7c3b"/><stop offset="1" stop-color="#2e9a4c"/>
+  </linearGradient>
+</defs>
+
+<!-- ===== ห้อง ===== -->
+<rect width="400" height="405" fill="url(#wallG)"/>
+<rect width="400" height="405" fill="url(#stripes)"/>
+<rect y="405" width="400" height="306" fill="url(#floorG)"/>
+<g stroke="#000" stroke-opacity=".22" stroke-width="1">
+  <line x1="0" y1="436" x2="400" y2="436"/><line x1="0" y1="470" x2="400" y2="470"/>
+  <line x1="0" y1="510" x2="400" y2="510"/><line x1="0" y1="556" x2="400" y2="556"/>
+  <line x1="0" y1="610" x2="400" y2="610"/><line x1="0" y1="672" x2="400" y2="672"/>
+</g>
+<rect y="398" width="400" height="10" fill="#0a0f20"/>
+
+<!-- หน้าต่างกลางคืน -->
+<g>
+  <rect x="24" y="44" width="100" height="108" rx="5" fill="#25305a"/>
+  <rect x="30" y="50" width="88" height="96" fill="#0a1430"/>
+  <circle cx="94" cy="82" r="11" fill="#fff4c9"/>
+  <circle cx="99" cy="78" r="10" fill="#0a1430"/>
+  <g fill="#fff">
+    <circle class="star" cx="46" cy="68" r="1.3" style="animation-delay:-.4s"/>
+    <circle class="star" cx="62" cy="96" r="1" style="animation-delay:-1.2s"/>
+    <circle class="star" cx="80" cy="64" r="1.2" style="animation-delay:-2s"/>
+    <circle class="star" cx="104" cy="112" r="1.1" style="animation-delay:-.8s"/>
+    <circle class="star" cx="42" cy="124" r="1.2" style="animation-delay:-1.6s"/>
+    <circle class="star" cx="70" cy="132" r="1" style="animation-delay:-2.4s"/>
+  </g>
+  <rect x="72" y="50" width="4" height="96" fill="#25305a"/>
+  <rect x="30" y="96" width="88" height="4" fill="#25305a"/>
+</g>
+
+<!-- ผ้าพันคอสีน้ำเงิน-ขาวแขวนผนัง -->
+<g transform="translate(42 164)">
+  <circle cx="11" cy="-4" r="3" fill="#aeb8d4"/>
+  <rect width="22" height="92" fill="#0a4bb5"/>
+  <rect y="16" width="22" height="6" fill="#fff"/><rect y="32" width="22" height="6" fill="#fff"/><rect y="48" width="22" height="6" fill="#fff"/>
+  <g stroke="#e8eefc" stroke-width="1.6" stroke-linecap="round">
+    <line x1="3" y1="92" x2="3" y2="100"/><line x1="7.5" y1="92" x2="7.5" y2="101"/><line x1="11" y1="92" x2="11" y2="100"/><line x1="14.5" y1="92" x2="14.5" y2="101"/><line x1="19" y1="92" x2="19" y2="100"/>
+  </g>
+</g>
+
+<!-- กระดาษโน้ตความฝัน -->
+<g transform="rotate(3 324 97)">
+  <rect x="270" y="52" width="108" height="86" fill="#f6efd9"/>
+  <rect x="310" y="44" width="30" height="12" fill="#e9d98a" opacity=".85"/>
+  <text class="hand" x="324" y="82" text-anchor="middle" font-size="12.5" fill="#2b3a67">สักวันฉันจะได้ไป</text>
+  <text class="hand" x="324" y="102" text-anchor="middle" font-size="13" fill="#0a4bb5">Stamford Bridge</text>
+  <path d="M324 112 l3 6 6.5 .8 -4.8 4.4 1.3 6.4 -6 -3.2 -6 3.2 1.3 -6.4 -4.8 -4.4 6.5 -.8z" fill="#f2b705"/>
+</g>
+
+<!-- แสงจากทีวีบนผนัง/พื้น -->
+<ellipse id="wallGlow" cx="200" cy="250" rx="235" ry="195" fill="url(#tvGlow)" opacity=".6"/>
+<ellipse id="floorGlow" cx="200" cy="520" rx="215" ry="125" fill="url(#floorGlowG)" opacity=".6"/>
+
+<!-- พรม เบาะ ลูกบอล -->
+<ellipse cx="200" cy="628" rx="182" ry="72" fill="#1c2750" opacity=".75"/>
+<ellipse cx="200" cy="628" rx="170" ry="64" fill="none" stroke="#2f4285" stroke-width="2" stroke-dasharray="6 6" opacity=".8"/>
+<ellipse id="kidShadow" cx="200" cy="668" rx="108" ry="15" fill="#000" opacity=".4"/>
+<ellipse cx="200" cy="652" rx="98" ry="26" fill="#4a3b6e"/>
+<ellipse cx="200" cy="646" rx="98" ry="24" fill="#5b4a86"/>
+<g transform="translate(342 652)">
+  <ellipse cx="0" cy="14" rx="17" ry="4" fill="#000" opacity=".35"/>
+  <circle r="15" fill="#f4f6fb"/>
+  <path d="M0 -6 l6 4.5 -2.3 7 h-7.4 l-2.3 -7z" fill="#1b1f2b"/>
+  <g stroke="#1b1f2b" stroke-width="1.2" fill="none"><path d="M0 -6 V-14"/><path d="M6 -1.5 L14 -4"/><path d="M3.7 5.5 L9 12"/><path d="M-3.7 5.5 L-9 12"/><path d="M-6 -1.5 L-14 -4"/></g>
+</g>
+
+<!-- ตู้ทีวี + ทีวี -->
+<ellipse cx="200" cy="418" rx="160" ry="9" fill="#000" opacity=".45"/>
+<rect x="64" y="346" width="272" height="70" rx="5" fill="#4a362c"/>
+<rect x="64" y="346" width="272" height="5" rx="2" fill="#6b5143"/>
+<rect x="72" y="358" width="124" height="50" rx="3" fill="#3d2d25" stroke="#2c201a"/>
+<rect x="204" y="358" width="124" height="50" rx="3" fill="#3d2d25" stroke="#2c201a"/>
+<circle cx="134" cy="383" r="3" fill="#c9a76a"/><circle cx="266" cy="383" r="3" fill="#c9a76a"/>
+<path d="M184 330 L216 330 L224 346 L176 346 Z" fill="#10131b"/>
+<rect x="80" y="170" width="240" height="160" rx="12" fill="#0a0c13" stroke="#1d2332" stroke-width="2"/>
+<circle class="led" cx="304" cy="325" r="1.7" fill="#4cff6a"/>
+
+<g clip-path="url(#screenClip)">
+<svg x="90" y="180" width="220" height="140" viewBox="0 0 220 140">
+  <g id="cam">
+    <g>
+      <rect x="0" y="0" width="27.5" height="140" fill="#2a8a3a"/><rect x="27.5" y="0" width="27.5" height="140" fill="#31963f"/>
+      <rect x="55" y="0" width="27.5" height="140" fill="#2a8a3a"/><rect x="82.5" y="0" width="27.5" height="140" fill="#31963f"/>
+      <rect x="110" y="0" width="27.5" height="140" fill="#2a8a3a"/><rect x="137.5" y="0" width="27.5" height="140" fill="#31963f"/>
+      <rect x="165" y="0" width="27.5" height="140" fill="#2a8a3a"/><rect x="192.5" y="0" width="27.5" height="140" fill="#31963f"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="1">
+      <rect x="8" y="8" width="204" height="124"/>
+      <line x1="110" y1="8" x2="110" y2="132"/>
+      <circle cx="110" cy="70" r="17"/>
+      <rect x="8" y="35" width="30" height="70"/><rect x="182" y="35" width="30" height="70"/>
+      <rect x="8" y="53" width="12" height="34"/><rect x="200" y="53" width="12" height="34"/>
+    </g>
+    <circle cx="110" cy="70" r="1.4" fill="#fff"/>
+    <rect x="1" y="56" width="7" height="28" fill="url(#net)" stroke="#fff" stroke-width=".8"/>
+    <rect id="netRect" x="212" y="56" width="7" height="28" fill="url(#net)" stroke="#fff" stroke-width=".8"/>
+    <g id="redTeam"></g>
+    <g id="blueTeam"></g>
+    <polyline id="trail" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" points=""/>
+    <g id="ball">
+      <ellipse cx="0.6" cy="2" rx="2.6" ry="1" fill="#000" opacity=".35"/>
+      <circle r="2.7" fill="#fff" stroke="#222" stroke-width=".4"/>
+      <circle r=".95" fill="#222"/>
+    </g>
+  </g>
+
+  <!-- ป้ายสกอร์ -->
+  <rect x="7" y="6" width="68" height="14" rx="3" fill="#000" fill-opacity=".7"/>
+  <rect x="10" y="9" width="4" height="8" rx="1" fill="#1d68ee"/>
+  <rect x="68" y="9" width="4" height="8" rx="1" fill="#e03a3a"/>
+  <text id="scoreTxt" x="41" y="16.3" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="9.5" font-weight="700" fill="#fff">0 - 0</text>
+  <rect x="79" y="6" width="34" height="14" rx="3" fill="#000" fill-opacity=".7"/>
+  <text id="clockTxt" x="96" y="16.3" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="8.5" font-weight="700" fill="#ffd54a">89:41</text>
+  <rect x="181" y="6" width="32" height="14" rx="3" fill="#d92b2b"/>
+  <text x="197" y="15.8" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="7.6" font-weight="800" fill="#fff">LIVE</text>
+
+  <!-- GOAL -->
+  <g id="goalTxt" opacity="0" transform="translate(110 70) scale(.2)">
+    <text x="0" y="13" text-anchor="middle" font-family="'Arial Black',Impact,sans-serif" font-size="38" font-weight="900" fill="#fff" stroke="#0a4bb5" stroke-width="5" paint-order="stroke" stroke-linejoin="round" letter-spacing="1">GOAL!</text>
+  </g>
+
+  <rect width="220" height="140" fill="url(#screenVig)"/>
+  <rect width="220" height="140" fill="url(#scan)"/>
+  <rect id="flash" width="220" height="140" fill="#fff" opacity="0"/>
+  <g id="tvStatic" display="none"><rect width="220" height="140" fill="#fff" filter="url(#noise)" opacity=".95"/></g>
+  <polygon points="0,0 120,0 0,80" fill="url(#reflect)"/>
+</svg>
+</g>
+<rect x="90" y="180" width="220" height="140" rx="6" fill="none" stroke="#000" stroke-width="2"/>
+
+<!-- ===== เด็ก (มองจากด้านหลัง) ===== -->
+<g id="kid">
+ <g id="kidSway">
+  <!-- ขา/สะโพก -->
+  <g id="legs">
+    <ellipse cx="128" cy="652" rx="26" ry="11" fill="#c98f66"/>
+    <ellipse cx="272" cy="652" rx="26" ry="11" fill="#c98f66"/>
+    <ellipse cx="108" cy="657" rx="13" ry="8" fill="#eaeef7"/>
+    <ellipse cx="292" cy="657" rx="13" ry="8" fill="#eaeef7"/>
+    <ellipse cx="150" cy="634" rx="38" ry="17" transform="rotate(-8 150 634)" fill="#0a3a8f"/>
+    <ellipse cx="250" cy="634" rx="38" ry="17" transform="rotate(8 250 634)" fill="#0a3a8f"/>
+    <ellipse cx="200" cy="630" rx="52" ry="22" fill="#093078"/>
+  </g>
+  <!-- คอ -->
+  <rect x="189" y="522" width="22" height="30" rx="8" fill="#b97f58"/>
+  <!-- ลำตัว: เสื้อสีน้ำเงินเรียบ มีชื่อและเบอร์ด้านหลัง -->
+  <path d="M156 552 Q200 538 244 552 L252 634 Q200 648 148 634 Z" fill="#0a4bb5"/>
+  <path d="M200 580 Q198 610 200 640" stroke="#000" stroke-opacity=".14" stroke-width="2" fill="none"/>
+  <path d="M158 551 Q200 538 242 551" stroke="#8fd0ff" stroke-opacity=".65" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M178 548 Q200 561 222 548" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <text class="shirt" x="200" y="574" text-anchor="middle" font-size="10" fill="#fff" letter-spacing="1.5">DREAM</text>
+  <text class="shirt" x="200" y="621" text-anchor="middle" font-size="40" fill="#fff">10</text>
+  <!-- แขน -->
+  <g id="armL">
+    <rect x="148" y="548" width="22" height="30" rx="10" fill="#0a4bb5"/>
+    <rect x="152" y="570" width="14" height="38" rx="7" fill="#c98f66"/>
+    <circle cx="159" cy="612" r="8" fill="#c98f66"/>
+  </g>
+  <g id="armR">
+    <rect x="230" y="548" width="22" height="30" rx="10" fill="#0a4bb5"/>
+    <rect x="234" y="570" width="14" height="38" rx="7" fill="#c98f66"/>
+    <circle cx="241" cy="612" r="8" fill="#c98f66"/>
+  </g>
+  <!-- หัว -->
+  <g id="kidHead">
+    <ellipse cx="170" cy="508" rx="6" ry="9" fill="#c28a62"/>
+    <ellipse cx="230" cy="508" rx="6" ry="9" fill="#c28a62"/>
+    <circle cx="200" cy="502" r="30" fill="#1b1411"/>
+    <path d="M176 486 Q200 468 224 486" stroke="#8aa0d0" stroke-opacity=".6" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M191 474 Q196 460 207 470 Q203 475 197 476 Z" fill="#1b1411"/>
+  </g>
+ </g>
+</g>
+
+<!-- แสงขอบ/มืดมุม และหรี่ไฟตอนฝัน -->
+<rect width="400" height="711" fill="url(#vig)" pointer-events="none"/>
+<rect id="dim" width="400" height="711" fill="#020512" opacity="0" pointer-events="none"/>
+
+<!-- ===== ภาพฝัน ===== -->
+<g id="trailDots" pointer-events="none">
+  <circle class="tr" cx="203" cy="478" r="4.5" fill="#fff" stroke="#9fd0ff" stroke-width="1.5" opacity="0"/>
+  <circle class="tr" cx="212" cy="452" r="7" fill="#fff" stroke="#9fd0ff" stroke-width="1.5" opacity="0"/>
+  <circle class="tr" cx="222" cy="424" r="10" fill="#fff" stroke="#9fd0ff" stroke-width="2" opacity="0"/>
+</g>
+<g id="dream" display="none" opacity="0" pointer-events="none">
+  <circle cx="200" cy="250" r="126" fill="#8fc7ff" opacity=".5" filter="url(#blur6)"/>
+  <g clip-path="url(#dreamClip)">
+    <rect x="76" y="126" width="248" height="248" fill="url(#dreamSky)"/>
+    <g fill="#fff">
+      <circle class="star" cx="120" cy="150" r="1.1"/><circle class="star" cx="170" cy="140" r="1" style="animation-delay:-1s"/>
+      <circle class="star" cx="236" cy="146" r="1.2" style="animation-delay:-2s"/><circle class="star" cx="284" cy="160" r="1" style="animation-delay:-.5s"/>
+      <circle class="star" cx="206" cy="160" r="1" style="animation-delay:-1.5s"/>
+    </g>
+    <path d="M60 304 L60 236 Q200 190 340 236 L340 304 Z" fill="#111a3f"/>
+    <g id="crowd"></g>
+    <path d="M96 200 L112 200 L196 340 L64 340 Z" fill="url(#beamG)"/>
+    <path d="M288 200 L304 200 L336 340 L204 340 Z" fill="url(#beamG)"/>
+    <g>
+      <line x1="104" y1="304" x2="104" y2="200" stroke="#27336a" stroke-width="3"/>
+      <rect x="93" y="184" width="22" height="16" rx="2" fill="#e3e9ff"/>
+      <circle cx="104" cy="192" r="34" fill="url(#lightG)"/>
+      <line x1="296" y1="304" x2="296" y2="200" stroke="#27336a" stroke-width="3"/>
+      <rect x="285" y="184" width="22" height="16" rx="2" fill="#e3e9ff"/>
+      <circle cx="296" cy="192" r="34" fill="url(#lightG)"/>
+    </g>
+    <rect x="76" y="300" width="248" height="12" fill="#2a8f47"/>
+    <rect x="76" y="312" width="248" height="14" fill="#237d3d"/>
+    <rect x="76" y="326" width="248" height="18" fill="#2a8f47"/>
+    <rect x="76" y="344" width="248" height="30" fill="#237d3d"/>
+    <line x1="76" y1="303" x2="324" y2="303" stroke="#fff" stroke-opacity=".8" stroke-width="1.5"/>
+    <!-- เด็กน้อยในสนาม -->
+    <g class="hop" id="dreamKid">
+      <ellipse cx="200" cy="354" rx="12" ry="3" fill="#000" opacity=".3"/>
+      <rect x="194" y="344" width="4.4" height="9" rx="1.5" fill="#c98f66"/><rect x="201.6" y="344" width="4.4" height="9" rx="1.5" fill="#c98f66"/>
+      <rect x="194" y="350" width="4.4" height="3.4" fill="#eef"/><rect x="201.6" y="350" width="4.4" height="3.4" fill="#eef"/>
+      <rect x="192.5" y="338" width="15" height="8" rx="2" fill="#093078"/>
+      <rect x="192" y="325" width="16" height="16" rx="4" fill="#0a4bb5"/>
+      <line x1="193" y1="328" x2="185" y2="313" stroke="#0a4bb5" stroke-width="3.6" stroke-linecap="round"/>
+      <line x1="207" y1="328" x2="215" y2="313" stroke="#0a4bb5" stroke-width="3.6" stroke-linecap="round"/>
+      <circle cx="184.5" cy="311.5" r="2.2" fill="#c98f66"/><circle cx="215.5" cy="311.5" r="2.2" fill="#c98f66"/>
+      <circle cx="200" cy="319" r="5.8" fill="#1b1411"/>
+    </g>
+    <text x="200" y="170" text-anchor="middle" font-family="'Sarabun','Arial',sans-serif" font-size="12" font-weight="800" fill="#fff" stroke="rgba(0,0,40,.7)" stroke-width="3" paint-order="stroke" stroke-linejoin="round" letter-spacing="2">STAMFORD BRIDGE</text>
+  </g>
+  <circle cx="200" cy="250" r="118" fill="none" stroke="#fff" stroke-width="5"/>
+</g>
+
+<g id="confetti" pointer-events="none"></g>
+<text id="sub" class="sub" x="200" y="690" text-anchor="middle" opacity="0"></text>
+<rect id="fadeRect" width="400" height="711" fill="#000" opacity="1" pointer-events="none"/>
+</svg>
+</div>
+
+<script>
+(() => {
+'use strict';
+const NS = 'http://www.w3.org/2000/svg';
+const $ = id => document.getElementById(id);
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const sstep = (a, b, x) => { const t = clamp((x - a) / (b - a)); return t * t * (3 - 2 * t); };
+const lerp = (a, b, t) => a + (b - a) * t;
+const easeOutBack = t => { const c1 = 1.70158, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+function rng(seed) { return function () { seed |= 0; seed = seed + 0x6D2B79F5 | 0; let t = Math.imul(seed ^ seed >>> 15, 1 | seed); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+
+const PERIOD = 24;
+const shotStart = 9.0, shotEnd = 9.55;
+
+/* ---------- ผู้เล่นบนจอทีวี ---------- */
+const blueBase = [[14,70],[45,32],[45,56],[45,84],[45,108],[78,40],[78,70],[78,100],[108,45],[108,95]];
+const redBase  = [[206,70],[172,30],[172,50],[172,90],[172,112],[140,44],[140,70],[140,98],[96,62],[96,78]];
+const shiftB = [0,18,18,18,18,34,34,34,52,52];
+const shiftR = [0,10,10,10,10,24,24,24,36,36];
+function makePlayer(parent, fill, stroke) {
+  const g = el('g', {}, parent);
+  el('ellipse', { cx: .8, cy: 2.2, rx: 3.8, ry: 1.5, fill: 'rgba(0,0,0,.28)' }, g);
+  el('circle', { r: 3.7, fill, stroke, 'stroke-width': .6 }, g);
+  el('circle', { cy: -.2, r: 1.5, fill: '#f0c8a0' }, g);
+  return g;
+}
+const blueEls = blueBase.map((_, i) => makePlayer($('blueTeam'), i === 0 ? '#f2d32c' : '#1d68ee', '#0a2a6e'));
+const redEls  = redBase.map((_, i) => makePlayer($('redTeam'), i === 0 ? '#35d0c8' : '#e03a3a', '#6e1010'));
+
+function pos(side, i, Tm) {
+  const base = (side === 'b' ? blueBase : redBase)[i];
+  const a = sstep(1.5, 8.8, Tm);
+  const ph = i * 1.7 + (side === 'b' ? 0 : 2.1);
+  const sh = (side === 'b' ? shiftB : shiftR)[i];
+  let x = base[0] + sh * a + Math.sin(Tm * 1.3 + ph) * 1.5;
+  let y = base[1] + Math.cos(Tm * 1.1 + ph * 1.3) * 2;
+  if (side === 'b' && i === 8) { const d = sstep(7.9, 9.0, Tm); x += 30 * d; y += (66 - base[1]) * .8 * d; }
+  if (side === 'r' && i === 0) { const d = sstep(shotStart + .12, shotEnd + .25, Tm); x -= 3 * d; y += 15 * d; }
+  if (side === 'b' && i > 0) { const c = sstep(9.9, 11.4, Tm) * .6; x = lerp(x, 182 + (i % 4) * 5, c); y = lerp(y, 52 + ((i * 7) % 5) * 7, c); }
+  return [x, y];
+}
+const passes = [
+  { f: 2, t: 6, a: 2.4, b: 3.1 },
+  { f: 6, t: 7, a: 4.0, b: 4.7 },
+  { f: 7, t: 9, a: 5.6, b: 6.3 },
+  { f: 9, t: 8, a: 7.0, b: 7.8 }
+];
+const carry = (h, Tm) => { const p = pos('b', h, Tm); return [p[0] + 4.6, p[1] + Math.sin(Tm * 9) * .8 + .4]; };
+function ballAt(Tm) {
+  let holder = 2;
+  for (const p of passes) {
+    if (Tm < p.a) break;
+    if (Tm <= p.b) {
+      const kk = (Tm - p.a) / (p.b - p.a), k = .5 - .5 * Math.cos(Math.PI * kk);
+      const A = carry(p.f, Tm), B = carry(p.t, Tm);
+      return [lerp(A[0], B[0], k), lerp(A[1], B[1], k)];
+    }
+    holder = p.t;
+  }
+  if (Tm < shotStart) return carry(holder, Tm);
+  if (Tm < shotEnd) { const k = (Tm - shotStart) / (shotEnd - shotStart), S = carry(8, shotStart); return [lerp(S[0], 216, k), lerp(S[1], 64, k)]; }
+  const r = Tm - shotEnd;
+  return [216 + Math.sin(r * 22) * Math.exp(-r * 4) * 1.2, 64 + Math.cos(r * 18) * Math.exp(-r * 4) * .8];
+}
+
+/* ---------- ฝูงชนในฝัน ---------- */
+const crowdG = $('crowd'), cr = rng(11), dots = [];
+const cols = ['#2f7bf0', '#ffffff', '#0a4bb5', '#7fb8ff', '#ffffff', '#ffd54a'];
+for (let r = 0; r < 8; r++) {
+  for (let x = 84; x <= 318; x += 6.2) {
+    const ytop = 232 - 18 * (1 - Math.pow((x - 200) / 130, 2));
+    const y = ytop + 7 + r * 7.4 + (cr() - .5) * 1.5;
+    if (y > 297) continue;
+    const c = el('circle', { cx: (x + (cr() - .5) * 1.5).toFixed(1), cy: y.toFixed(1), r: (1.5 + cr() * .4).toFixed(2), fill: cols[Math.floor(cr() * cols.length)] }, crowdG);
+    dots.push({ c, x });
+  }
+}
+
+/* ---------- กระดาษคอนเฟตติ ---------- */
+const confG = $('confetti'), cc = rng(7), conf = [];
+const confCols = ['#2f7bf0', '#ffffff', '#ffd54a', '#7fd0ff', '#ff6b6b'];
+for (let i = 0; i < 48; i++) {
+  const r = el('rect', { width: (5 + cc() * 4).toFixed(1), height: (3 + cc() * 3).toFixed(1), fill: confCols[i % confCols.length], opacity: 0 }, confG);
+  conf.push({ r, vx: (cc() - .5) * 200, vy: -(70 + cc() * 150), x0: 150 + cc() * 100, y0: 175, rot: cc() * 360, vr: (cc() - .5) * 720, delay: cc() * .25, ph: cc() * 6 });
+}
+
+/* ---------- ซับไตเติล ---------- */
+const subs = [
+  { a: 0.8,  b: 5.0,  t: 'เด็กคนหนึ่ง… กับทีมสีน้ำเงินที่เขารัก' },
+  { a: 5.2,  b: 9.2,  t: 'ทุกนัด เขาไม่เคยพลาดดูสักครั้ง' },
+  { a: 9.7,  b: 13.0, t: 'ทุกครั้งที่ลูกบอลเข้าตาข่าย… ใจเขาพองโต' },
+  { a: 13.5, b: 19.2, t: 'และเขาฝันว่า สักวันจะได้ไปที่นั่นจริงๆ' },
+  { a: 20.2, b: 23.2, t: 'แต่ฝันนี้… ไม่ได้มาง่ายๆ' }
+];
+let curSub = -1;
+
+/* ---------- เด็ก ---------- */
+function jumpY(T) {
+  const dt = T - 9.75;
+  if (dt < 0 || dt > 3.6) return 0;
+  const env = 1 - sstep(2.4, 3.6, dt);
+  return -Math.abs(Math.sin(dt * Math.PI * 1.7)) * 38 * env - 6 * sstep(0, .2, dt) * env;
+}
+function armAngle(T) {
+  const rest = 12, tense = 100, cheer = 160;
+  let a = rest + (tense - rest) * sstep(8.0, 8.8, T) + (cheer - tense) * sstep(9.55, 9.85, T) - (cheer - rest) * sstep(13.0, 14.2, T);
+  const w = sstep(9.85, 10.2, T) * (1 - sstep(12.4, 13.0, T));
+  return a + Math.sin(T * 13) * 11 * w;
+}
+
+/* ---------- องค์ประกอบ ---------- */
+const cam = $('cam'), ballEl = $('ball'), trailEl = $('trail'), netRect = $('netRect');
+const scoreTxt = $('scoreTxt'), clockTxt = $('clockTxt'), goalTxt = $('goalTxt'), flash = $('flash');
+const tvStatic = $('tvStatic'), noiseSeed = $('noiseSeed');
+const wallGlow = $('wallGlow'), floorGlow = $('floorGlow');
+const kid = $('kid'), kidShadow = $('kidShadow'), armL = $('armL'), armR = $('armR');
+const dream = $('dream'), trs = Array.from(document.querySelectorAll('.tr'));
+const dim = $('dim'), subEl = $('sub'), fadeRect = $('fadeRect');
+const trail = [];
+let lastScore = '', lastClock = '';
+
+function render(T) {
+  /* เวลาในจอทีวี: ช่วงท้ายมีสัญญาณซ่า แล้วเล่นซ้ำจากต้น */
+  let Tm = T, stat = false;
+  if (T >= 20.6 && T < 21.6) { stat = true; Tm = 0; } else if (T >= 21.6) { Tm = T - 21.6; }
+  tvStatic.setAttribute('display', stat ? 'inline' : 'none');
+  if (stat) noiseSeed.setAttribute('seed', String(Math.floor(T * 40) % 97));
+
+  const zoom = 1 + .38 * sstep(9.5, 10.6, Tm) * (1 - sstep(12.8, 13.8, Tm));
+  cam.setAttribute('transform', `translate(190 68) scale(${zoom.toFixed(3)}) translate(-190 -68)`);
+
+  for (let i = 0; i < 10; i++) {
+    const b = pos('b', i, Tm), r = pos('r', i, Tm);
+    blueEls[i].setAttribute('transform', `translate(${b[0].toFixed(2)} ${b[1].toFixed(2)})`);
+    redEls[i].setAttribute('transform', `translate(${r[0].toFixed(2)} ${r[1].toFixed(2)})`);
+  }
+  const bp = ballAt(Tm);
+  ballEl.setAttribute('transform', `translate(${bp[0].toFixed(2)} ${bp[1].toFixed(2)})`);
+  if (Tm < .05 || Tm > 9.6) trail.length = 0; else { trail.push(bp[0].toFixed(1) + ',' + bp[1].toFixed(1)); if (trail.length > 7) trail.shift(); }
+  trailEl.setAttribute('points', trail.join(' '));
+
+  const gt = Tm - shotEnd;
+  netRect.setAttribute('transform', gt > 0 ? `translate(${(Math.sin(gt * 25) * Math.exp(-gt * 5) * 2).toFixed(2)} 0)` : '');
+  const sc = Tm >= shotEnd ? '1 - 0' : '0 - 0';
+  if (sc !== lastScore) { scoreTxt.textContent = sc; lastScore = sc; }
+  const secs = 89 * 60 + 41 + Math.floor(Tm), ck = Math.floor(secs / 60) + ':' + String(secs % 60).padStart(2, '0');
+  if (ck !== lastClock) { clockTxt.textContent = ck; lastClock = ck; }
+
+  if (gt > 0 && gt < 3.4) {
+    const s = .2 + .8 * easeOutBack(clamp(gt / .45));
+    goalTxt.setAttribute('transform', `translate(110 70) scale(${s.toFixed(3)})`);
+    goalTxt.setAttribute('opacity', (1 - sstep(2.7, 3.3, gt)).toFixed(3));
+  } else goalTxt.setAttribute('opacity', 0);
+  flash.setAttribute('opacity', gt > 0 ? Math.max(0, .85 - gt * 2.2).toFixed(3) : 0);
+
+  /* แสงห้อง */
+  const dreamK = sstep(13.2, 14, T) * (1 - sstep(19.4, 20.2, T));
+  let g = .6 + .05 * Math.sin(T * 21) + .04 * Math.sin(T * 6.1);
+  const g2 = T - shotEnd; if (g2 > 0) g += .45 * Math.max(0, 1 - g2 * 1.1);
+  g *= 1 - .35 * dreamK; if (stat) g *= 1.2;
+  wallGlow.setAttribute('opacity', clamp(g).toFixed(3));
+  floorGlow.setAttribute('opacity', clamp(g).toFixed(3));
+
+  /* เด็ก */
+  const lean = sstep(4.5, 9.0, T) * (1 - sstep(9.5, 9.8, T));
+  const jy = jumpY(T);
+  kid.setAttribute('transform', `translate(0 ${(jy - 5 * lean).toFixed(2)})`);
+  kidShadow.setAttribute('rx', (108 * (1 + jy * .006)).toFixed(1));
+  kidShadow.setAttribute('opacity', (.4 + jy * .004).toFixed(3));
+  const aa = armAngle(T);
+  armL.setAttribute('transform', `rotate(${aa.toFixed(2)} 159 556)`);
+  armR.setAttribute('transform', `rotate(${(-aa).toFixed(2)} 241 556)`);
+
+  /* ภาพฝัน */
+  let sc2 = 0, op = 0;
+  if (T >= 13.55 && T < 19.4) { sc2 = .12 + .88 * easeOutBack(clamp((T - 13.55) / .75)); op = clamp((T - 13.55) / .25); }
+  else if (T >= 19.4 && T < 19.8) { const k = (T - 19.4) / .4; sc2 = 1 + .18 * k; op = 1 - k; }
+  if (op > .01) {
+    dream.setAttribute('display', 'inline');
+    dream.setAttribute('opacity', op.toFixed(3));
+    dream.setAttribute('transform', `translate(200 ${(250 + Math.sin(T * 2) * 2).toFixed(2)}) scale(${sc2.toFixed(3)}) translate(-200 -250)`);
+    for (const d of dots) d.c.setAttribute('opacity', (.5 + .5 * Math.max(0, Math.sin(d.x * .05 - T * 4))).toFixed(2));
+  } else dream.setAttribute('display', 'none');
+  const starts = [13.0, 13.2, 13.4], cxy = [[203, 478], [212, 452], [222, 424]];
+  trs.forEach((c, i) => {
+    const k = sstep(starts[i], starts[i] + .2, T), o = k * (1 - sstep(19.2, 19.5, T)), p = cxy[i], s = .3 + .7 * k;
+    c.setAttribute('opacity', o.toFixed(3));
+    c.setAttribute('transform', `translate(${p[0]} ${p[1]}) scale(${s.toFixed(3)}) translate(${-p[0]} ${-p[1]})`);
+  });
+  dim.setAttribute('opacity', (.35 * dreamK).toFixed(3));
+
+  /* คอนเฟตติ */
+  const dt0 = T - 9.6;
+  conf.forEach((c, i) => {
+    const dt = dt0 - c.delay;
+    if (dt < 0 || dt > 4) { c.r.setAttribute('opacity', 0); return; }
+    const x = c.x0 + c.vx * dt + Math.sin(dt * 6 + c.ph) * 8;
+    const y = c.y0 + c.vy * dt + 60 * dt * dt;
+    c.r.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(c.rot + c.vr * dt).toFixed(0)})`);
+    c.r.setAttribute('opacity', (1 - sstep(2.8, 4, dt)).toFixed(2));
+  });
+
+  /* ซับไตเติล */
+  let idx = -1;
+  for (let i = 0; i < subs.length; i++) if (T >= subs[i].a && T < subs[i].b) { idx = i; break; }
+  if (idx !== curSub) { curSub = idx; subEl.textContent = idx >= 0 ? subs[idx].t : ''; }
+  if (idx >= 0) { const s = subs[idx]; subEl.setAttribute('opacity', Math.min(sstep(s.a, s.a + .35, T), 1 - sstep(s.b - .35, s.b, T)).toFixed(3)); }
+  else subEl.setAttribute('opacity', 0);
+
+  fadeRect.setAttribute('opacity', clamp(1 - sstep(0, 1, T) + sstep(23, 24, T)).toFixed(3));
+}
+
+/* ---------- วนลูป ---------- */
+const fixed = new URLSearchParams(location.search).get('t');
+let t0 = performance.now();
+function frame(now) {
+  render(((now - t0) / 1000) % PERIOD);
+  requestAnimationFrame(frame);
+}
+if (fixed !== null) render(parseFloat(fixed));
+else {
+  requestAnimationFrame(frame);
+  $('stage').addEventListener('pointerdown', () => { t0 = performance.now(); });
+}
+})();
+</script>
+</body>
+</html>
